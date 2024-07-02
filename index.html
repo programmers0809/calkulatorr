@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+
+</head>
+<body>
+    <div class="calculator">
+        <div class="display" id="display"></div>
+        <div class="buttons">
+            <button class="btn" onclick="clearDisplay()">C</button>
+            <button class="btn" onclick="deleteLast()">DEL</button>
+            <button class="btn" onclick="appendCharacter('/')">/</button>
+            <button class="btn" onclick="appendCharacter('*')">*</button>
+            <button class="btn" onclick="appendCharacter('7')">7</button>
+            <button class="btn" onclick="appendCharacter('8')">8</button>
+            <button class="btn" onclick="appendCharacter('9')">9</button>
+            <button class="btn" onclick="appendCharacter('-')">-</button>
+            <button class="btn" onclick="appendCharacter('4')">4</button>
+            <button class="btn" onclick="appendCharacter('5')">5</button>
+            <button class="btn" onclick="appendCharacter('6')">6</button>
+            <button class="btn" onclick="appendCharacter('+')">+</button>
+            <button class="btn" onclick="appendCharacter('1')">1</button>
+            <button class="btn" onclick="appendCharacter('2')">2</button>
+            <button class="btn" onclick="appendCharacter('3')">3</button>
+            <button class="btn" onclick="calculate()">=</button>
+            <button class="btn zero" onclick="appendCharacter('0')">0</button>
+            <button class="btn" onclick="appendCharacter('.')">.</button>
+            <button class="btn" onclick="appendCharacter('x')">x</button>
+        </div>
+    </div>
+    <style>body {
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f0f0f0;
+        margin: 0;
+    }
+    body:hover{
+        background-image:url(./2558386766.jpg) ;
+    }
+    
+    .calculator {
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+    }
+    
+    .display {
+        font-size: 2em;
+        margin-bottom: 20px;
+        text-align: right;
+        border: 1px solid #ccc;
+        padding: 10px;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+    }
+    
+    .buttons {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+    }
+    
+    .btn {
+        padding: 20px;
+        font-size: 1.5em;
+        border: none;
+        border-radius: 5px;
+        background-color: #ddd;
+        cursor: pointer;
+    }
+    
+    .btn:active {
+        background-color: #ccc;
+    }
+    
+    .zero {
+        grid-column: span 2;
+    }
+    </style>
+    <script>
+        let display = document.getElementById('display');
+
+function appendCharacter(char) {
+    display.innerText += char;
+}
+
+function clearDisplay() {
+    display.innerText = '';
+}
+
+function deleteLast() {
+    display.innerText = display.innerText.slice(0, -1);
+}
+
+function calculate() {
+    try {
+        display.innerText = eval(display.innerText);
+    } catch {
+        display.innerText = 'Error';
+    }
+}
+
+    </script>
+</body>
+</html>
